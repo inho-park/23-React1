@@ -1,5 +1,75 @@
 # 박준성
 ***
+## 5주차 3/30
+### Element
+* 리액트 요소는 자바스크립트 객체의 형태로 존재
+* 컴포넌트 (Button 등), 속성(color 등) 및 내부의 모든 childen 을 포함하는 일반 JS 객체
+* 불변성을 가지고 있음
+* Virtual DOM
+![virtualDOM](./public/image/5weeks/5%EC%A3%BC%EC%B0%A8VirtualDOM.png)
+
+### Element 렌더링
+render 함수를 통해 virtual DOM 구조를 DOM 구조로 다시 바꾸는 과정을 말함
+
+### Component
+* 컴포넌트 기반의 구조
+* 컴포넌트 재사용이 가능 => 전체 코드 양 감소 => 개발 시간 및 유지 보수 비용 감소
+* 입력 Porps 출력 React Element
+* 이름은 항상 대문자로 ( 리액트는 소문자로 시작하는 태그를 html tag (DOM) 으로 인식하기 때문 )
+* 컴포넌트 합성 (컴포넌트 안에 또 다른 컴포넌트 사용 가능)
+```
+function Component(props) {
+  return <h1>Hello {props.name}</h1>
+}
+
+function App(props) {
+  return (
+    <div>
+      <Component name="준성" />
+      <Component name="인호" />
+    </div>
+  )
+}
+
+ReactDOM.render(
+  <App/>,
+  document.getElementById('root')
+)
+```
+*최근에는 클래스형 컴포넌트보다 함수형 컴포넌트 사용 ( 생명주기의 유무, Hook 개념 발생 )
+
+### Props 
+* 컴포넌트의 속성
+* Props 에 따라 컴포넌트에서 다른 element 가 나옴
+![props](./public/image/5weeks/5%EC%A3%BC%EC%B0%A8Props.png)
+* JSX 에서 key-value 로 구성
+*Pure 함수 ( props 를 바꾸지 않음 ) 형태를 가짐
+```javascript
+function App (props) {
+  return (
+    <Layout
+      name="준성",
+      age={25}
+      width={2560},
+      height={1440},
+      header={
+        <Header head="준성's github">
+      }
+      footer={
+        <Footer/>
+      }
+    />
+  )
+}
+```
+* JSX 없이 사용시
+```javascript
+React.createElement(
+  name="준성",
+  age={25}
+)
+```
+
 ## 4주차 3/23
 ## React 와 JSX
 아래와 같은 변수 선언이 가능한 것은 React 뿐이며 이러한 표현식을 포함하는 확장자가 JSX 이다
