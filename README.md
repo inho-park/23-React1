@@ -1,4 +1,15 @@
 # 박준성
+
+***
+## 6주차 4/06
+### 컴포넌트 추출
+* 복잡한 컴포넌트를 여러 개의 컴포넌트로 분리 가능
+* 그러나 1개의 컴포넌트에 하나의 기능만 사용하도록 설계 지향
+### 오늘 한 실습
+1. Comment 컴포넌트 작성
+2. CommentList 컴포넌트 안에 Comment 컴포넌트의 props 값 입력
+3. 기존의 index.js 에서 setInterval 제거
+4. CommentList 컴포넌트 안에서 props 를 json 배열의 객체값에서 꺼내어 사용
 ***
 ## 5주차 3/30
 ### Element
@@ -17,7 +28,7 @@ render 함수를 통해 virtual DOM 구조를 DOM 구조로 다시 바꾸는 과
 * 입력 Porps 출력 React Element
 * 이름은 항상 대문자로 ( 리액트는 소문자로 시작하는 태그를 html tag (DOM) 으로 인식하기 때문 )
 * 컴포넌트 합성 (컴포넌트 안에 또 다른 컴포넌트 사용 가능)
-```
+```javascript
 function Component(props) {
   return <h1>Hello {props.name}</h1>
 }
@@ -73,11 +84,11 @@ React.createElement(
 ## 4주차 3/23
 ## React 와 JSX
 아래와 같은 변수 선언이 가능한 것은 React 뿐이며 이러한 표현식을 포함하는 확장자가 JSX 이다
-```
+```javascript
 const name = 'Josh Perez';
 const element = <h1>Hello, {name}</h1>;
 ```
-```
+```javascript
 function formatName(user) {
   return user.firstName + ' ' + user.lastName;
 }
@@ -93,7 +104,7 @@ const element = (
   </h1>
 );
 ```
-```
+```javascript
 function getGreeting(user) {
   if (user) {
     return <h1>Hello, {formatName(user)}!</h1>;
@@ -103,7 +114,7 @@ function getGreeting(user) {
 ```
 이러한 표현식들을 사용한 JSX 표현식이 javascript 함수 호출이 되고 javascript 객체로 인식
 => Babel 엔진이 JSX 를 React.createElement() 호출로 컴파일
-```
+```javascript
 JSX 표현식
 const element = (
   <h1 className="greeting">
