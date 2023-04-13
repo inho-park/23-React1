@@ -1,5 +1,64 @@
 # 박준성
+***
+## 7주차 4/13
+### Hook
+* 함수형 컴포넌트에서 state 나 생명주기함수의 기능을 사용하게 해주기 위해 추가된 기능
 
+1. **useState** : const [변수명, set함수명] = useState(초깃값);
+* 함수형 컴포넌트에서 state 를 변경하기 위한 함수
+* 함수를 호출할 때 변수에 초깃값 설정
+```javascript
+// const [변수명, set함수명] = useState(초깃값);
+// Ex ) 
+const [count, setCount] = useState(0);
+return (
+  <div>
+    <p>{setCount(count + 1)}</p>
+  </div>
+)
+```
+2. **useEffect** : useEffect(이펙트 함수, 의존성 배열);
+* side effect(부가적인 작용) 를 수행하기 위한 함수
+* 클래스 컴포넌트의 생명주기 함수와 같은 기능을 하나로 통합하여 제공하는 함수
+* 렌더링된 이후, 재랜더링된 이후에 실행
+* 의존성 배열의 값이 변화할 때 이펙트 함수가 사용됨
+* 마운트와 언마운트 될 때만 한 번씩 실행하게 하고 싶으면 빈 배열을 넣어주면 됨 
+```javascript
+// useEffect(이펙트 함수, 의존성 배열);
+// Ex) 아래 예시는 의존성 배열이 없음
+UseEffect(() => {
+  document.title = `총 ${count}번 클릭`
+}); // 의존성 배열 없이 사용 시 랜더링 이후 해당 이펙트 함수가 실행됨
+```
+* useEffect() 에서 반환하는 함수는 컴포넌트가 마운트될 때나 해제될 때 호출
+![useEffect](./public/image/7weeks/useEffect.png)
+
+3. **useMemo** : useMemo(메모 함수, 의존성 배열)
+* Memoized value 를 반환하는 훅
+* 이전 계산값을 갖고 있어 반복 작업에 좋음
+* 랜더링이 일어나는 동안 실행
+* 의존성 배열을 넣지 않으면 랜더링할 때마다 함수 실행
+=> 반복작업을 줄이고자하는 함수 기능을 사용 X
+![useMemo](./public/image/7weeks/useMemo.png)
+
+4. **useCallback** : useCallback(콜백 함수, 의존성 배열)
+* useMemo 와 의존성 배열을 파라미터로 받는 것은 일치하지만 값이 아닌 함수를 반환 ( 파라미터로 받은 함수를 콜백이라고 부름 )
+* useMemo 와 마찬가지로 의존성 배열이 변경될 시 콜백함수 반환
+
+5. **useRef** : const 변수명 = useRef(초깃값);
+* 레퍼런스란 특정 컴포넌트에 접근할 수 있는 객체를 의미
+* .current 라는 속성이 있는데 현재 참조하고 있는 엘리먼트 의미
+```javascript
+const refContainer = useRef(초깃값);
+// 이 변수는 컴포넌트의 생명주기 전체에 걸쳐서 유지 ( 마운트 해제 전까지 )
+```
+### 훅의 규칙
+* 최상위 레벨에서만 호출해야함 ( 컴포넌트 최상위 )
+  * 반복문이나 조건문 중첩된 함수들 안에서 훅 호출 X
+  * 컴포넌트가 랜더링 될 때마다 같은 순서로 호출되어야함
+* 함수형 컴포넌트에서만 훅 호출
+    * 일반 자바스크립트에서 훅 호출 X
+    * 클래스 컴포넌트에서 훅 호출 X
 ***
 ## 6주차 4/06
 ### state 와 생명주기
@@ -60,7 +119,9 @@ ReactDOM.render(
 * 컴포넌트의 속성
 * Props 에 따라 컴포넌트에서 다른 element 가 나옴
 ![props](./public/image/5weeks/5%EC%A3%BC%EC%B0%A8Props.png)
+
 * JSX 에서 key-value 로 구성
+
 *Pure 함수 ( props 를 바꾸지 않음 ) 형태를 가짐
 ```javascript
 function App (props) {
