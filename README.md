@@ -1,5 +1,9 @@
 # 박준성
 ***
+<details>
+<summary>7주차 4/13</summary>
+<div markdown='1'>
+
 ## 7주차 4/13
 ### Hook
 * 함수형 컴포넌트에서 state 나 생명주기함수의 기능을 사용하게 해주기 위해 추가된 기능
@@ -59,7 +63,14 @@ const refContainer = useRef(초깃값);
 * 함수형 컴포넌트에서만 훅 호출
     * 일반 자바스크립트에서 훅 호출 X
     * 클래스 컴포넌트에서 훅 호출 X
+</div>
+</details>
+
 ***
+<details>
+<summary>6주차 4/06</summary>
+<div markdown='1'>
+
 ## 6주차 4/06
 ### state 와 생명주기
 State
@@ -76,7 +87,15 @@ State
 2. CommentList 컴포넌트 안에 Comment 컴포넌트의 props 값 입력
 3. 기존의 index.js 에서 setInterval 제거
 4. CommentList 컴포넌트 안에서 props 를 json 배열의 객체값에서 꺼내어 사용
+
+</div>
+</details>
+
 ***
+<details>
+<summary>5주차 3/30</summary>
+<div markdown='1'>
+
 ## 5주차 3/30
 ### Element
 * 리액트 요소는 자바스크립트 객체의 형태로 존재
@@ -118,11 +137,10 @@ ReactDOM.render(
 ### Props 
 * 컴포넌트의 속성
 * Props 에 따라 컴포넌트에서 다른 element 가 나옴
+* JSX 에서 key-value 로 구성
+*Pure 함수 ( props 를 바꾸지 않음 ) 형태를 가짐
 ![props](./public/image/5weeks/5%EC%A3%BC%EC%B0%A8Props.png)
 
-* JSX 에서 key-value 로 구성
-
-*Pure 함수 ( props 를 바꾸지 않음 ) 형태를 가짐
 ```javascript
 function App (props) {
   return (
@@ -148,6 +166,13 @@ React.createElement(
   age={25}
 )
 ```
+</div>
+</details>
+
+***
+<details>
+<summary>4주차 3/23</summary>
+<div markdown='1'>
 
 ## 4주차 3/23
 ## React 와 JSX
@@ -202,7 +227,14 @@ const element = React.createElement(
 1. 코드 간결해짐
 2. 가독성 향상
 3. Injection Attack 이라 불리는 해킹 방법을 방어
+</div>
+</details>
+
 ***
+<details>
+<summary>3주차 3/16</summary>
+<div markdown='1'>
+
 ## 3주차 3/16
 ## 1. README 작성요령
 # 이름 : 박준성 (h1)
@@ -254,8 +286,14 @@ npx -v
 3. ctrl + f 누르고 3000 검색
 4. 해당 포트 번호의 pid 를 확인
 5. taskkill /f /pid [포트 번호의 pid] 입력
+</div>
+</details>
 
 ***
+<details>
+<summary>2주차 3/09</summary>
+<div markdown='1'>
+
 ## 2주차 3/9
 ## React 강의
 h3 SPA(Single page Application)
@@ -279,3 +317,5 @@ config를 확인방법
 Global 설정 파일 확인 : git config --global --list
 Local 설정 파일 확인 : git config --local --list
 모든 설정 확인 : git config --list
+</div>
+</details>
