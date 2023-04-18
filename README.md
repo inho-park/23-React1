@@ -296,7 +296,7 @@ npx -v
 
 ## 2주차 3/9
 ## React 강의
-h3 SPA(Single page Application)
+SPA(Single page Application)
 -자바스크립트
 1.E56 (ECMAScript6) - 표준 ECMA-262
 
@@ -305,17 +305,18 @@ var : 중복 선언 가능, 재할당 가능
 let : 중복 선언 불가능, 재할당 가능
 const : 중복 선언 불가능, 재할당 불가능
 
+===================== git 정보확인
 config를 확인방법 
 우선 순위는 Local>global>System순이며 Local 이 설정권한이 가장 높음
 
 
 ### 예시
-사용자 등록 : git config --global user.name
-이메일 등록 : git config --global user.email
-사용자 초기화 : git config --global --unset-all user.name
-설정 파일 확인 : git config --system --list
-Global 설정 파일 확인 : git config --global --list
-Local 설정 파일 확인 : git config --local --list
+사용자 등록 : git config --global user.name<br>
+이메일 등록 : git config --global user.email<br>
+사용자 초기화 : git config --global --unset-all user.name<br>
+설정 파일 확인 : git config --system --list<br>
+Global 설정 파일 확인 : git config --global --list<br>
+Local 설정 파일 확인 : git config --local --list<br>
 모든 설정 확인 : git config --list
 </div>
 </details>

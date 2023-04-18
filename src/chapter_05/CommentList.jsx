@@ -13,10 +13,10 @@ const comments = [
     {
         name: "박준성3",
         comment: "댓글 3333"
-    },
+    }
 ]
 
-export default function CommentList(props) {
+export default function CommentList() {
     return (
         <div>
             {comments.map((foo) => {

@@ -5,7 +5,7 @@ export default function Book(props) {
     return (
         <div>
             <h1>{`책 이름 : ${props.name}`}</h1>
-            <h1>{` 페이지 : ${props.numOfPage}`}</h1>
+            <h1>{`페이지 : ${props.numOfPage}`}</h1>
         </div>
     );
 };
