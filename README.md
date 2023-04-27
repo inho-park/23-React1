@@ -1,6 +1,97 @@
 # 박준성
 ***
 <details>
+<summary>9주차 4/17</summary>
+<div markdown='1'>
+
+## 9주차 4/27
+### Event
+* DOM 에서 클릭 이벤트 처리
+```javascript
+<button onclick="activate()">
+  Activate
+</button>
+```
+
+* React 에서 클릭 이벤트 처리
+```javascript
+<button onClick={activate()}>
+  Activate
+</button>
+```
+* 이벤트 핸들러로 클릭 이벤트 처리
+  * 클래스 컴포넌트에서의 이벤트 처리 예제
+```javascript
+class Toggle extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = { isToggleOn: true};
+
+    // callback 에서 this 를 사용하기 위해서 바인딩 필수적
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick() {
+    this.setState(prevState => ({
+      isToggleOn: !prevState.isToggleOn
+    }))
+  }
+
+  render() {
+    return (
+      <button onClick={this.handleClick}>
+        {this.state.isToggleOn ? '켜짐': '꺼짐'}
+      </button>
+    );
+  }
+}
+```
+
+  * 함수형 컴포넌트에서의 이벤트 처리 예제
+```javascript
+function Toggle(props) {
+  const [isToggleOn, setIsToggleOn] = useState(true);
+
+  // 1. 함수 안에 함수로 정의
+  function handleClick() {
+    setIsToggleOn((isToggleOn) => !isToggleOn);
+  }
+
+  // 2. arrow function 을 사용하여 정의
+  const handleClick = () => {
+    setIsToggleOn((isToggleOn) => !isToggleOn);
+  }
+
+  return (
+    <button onClick={handleClick}>
+      {isToggleOn ? '켜짐' : '꺼짐'}
+    </button>
+  )
+}
+```
+
+### Arguments 전달
+* 함수를 정의할 때는 Parameter 혹은 매개변수, 사용할 때는 Argument 혹은 인자라고 부름
+
+* 이벤트 핸들러에 매개변수를 전달하는 경우도 있음
+```javascript
+// 화살표 함수를 통한 인자 전달
+<button onClick={(event) => this.deleteItem(id, event)}>delete</button>
+// bind 를 통한 인자 전달
+<button onClick={this.deleteItem.bind(this, id)}>delete</button>
+
+// event 라는 매개변수는 리엑트의 이벤트 객체를 의미
+// 첫번째 코드는 명시적으로 event 를 매개변수로 넣어주었고 (함수형 컴포넌트),
+// 두 번째 코드는 id 이후 두번째 매개변수로 event 자동 전달됨 (클래스형 컴포넌트)
+```
+
+
+</div>
+</details>
+
+***
+<details>
 <summary>7주차 4/13</summary>
 <div markdown='1'>
 
@@ -305,18 +396,16 @@ var : 중복 선언 가능, 재할당 가능
 let : 중복 선언 불가능, 재할당 가능
 const : 중복 선언 불가능, 재할당 불가능
 
-===================== git 정보확인
-config를 확인방법 
-우선 순위는 Local>global>System순이며 Local 이 설정권한이 가장 높음
-
-
-### 예시
-사용자 등록 : git config --global user.name<br>
-이메일 등록 : git config --global user.email<br>
-사용자 초기화 : git config --global --unset-all user.name<br>
+===================== git 정보확인<br>
+config 확인방법<br>
+우선 순위는 Local>global>System순이며 Local 이 설정권한이 가장 높음<br>
 설정 파일 확인 : git config --system --list<br>
 Global 설정 파일 확인 : git config --global --list<br>
 Local 설정 파일 확인 : git config --local --list<br>
-모든 설정 확인 : git config --list
+모든 설정 확인 : git config --list<br><br>
+
+사용자 등록 : git config --global user.name<br>
+이메일 등록 : git config --global user.email<br>
+사용자 초기화 : git config --global --unset-all user.name
 </div>
 </details>
