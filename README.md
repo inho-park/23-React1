@@ -86,6 +86,83 @@ function Toggle(props) {
 // 두 번째 코드는 id 이후 두번째 매개변수로 event 자동 전달됨 (클래스형 컴포넌트)
 ```
 
+### 조건부 렌더링
+```javascript
+function Greeting(props) {
+  const isLoggedIn = props.isLoggedIn;
+  if (isLoggedIn) {
+    return <UserGreeting />;
+  }
+  return <GuestGreeting />;
+}
+```
+
+### 엘리먼트 변수
+* 렌더링해야 될 컴포넌트를 변수처럼 사용하는 방법
+```javascript
+let button;
+if (isLoggedIn) {
+  // LogoutButton 이나 LoginButton 을 state 에 따라 변수에 컴포넌트 객체를 저장하여 사용
+  button = <LogoutButton onClick={handleLogoutClick} />
+} else {
+  button = <LoginButton onClick={handleLoginClick} />
+}
+
+return (
+  <div>
+    <Greeting isLoggedIn={isLoggedIn} />
+    {button}
+  </div>
+)
+```
+
+### 인라인 inline 
+1. 조건
+* if 문을 직접 사용하지 않고, 동일한 효과를 내기 위해 && 논리 연산자를 사용
+* && : 모든 조건이 참일 때 = true 반환 (즉 첫번째 조건이 거짓이면 두번째 조건은 판단 X)
+```javascript
+{unreadMessages.length > 0 &&
+  <h2>
+    현재 {unreadMessages.length} 개의 읽지 않은 메시지가 있습니다
+  </h2>
+}
+```
+
+2. if - else
+* 삼항 연산자 사용
+```javascript
+function UserStatus(props) {
+  return (
+    <div>
+      <div>
+        이 사용자는 현재 <b>{props.isLoggedIn ? '로그인' : '로그인하지 않은'}</b> 상태입니다
+      </div>
+
+      <div>
+        <Greeting isLoggedIn={isLoggedIn} />
+        {isLoggedIn
+          ? <LogoutButton onClick={handleLogoutClick} />
+          : <LoginButton onClick={handleLoginClick} />
+        }
+      </div>
+    </div>
+  )
+}
+```
+
+3. 컴포넌트 렌더링 막기
+```javascript
+function WarningBanner(props) {
+  if (!props.warning) {
+    return null;
+  }
+  return (
+    <div>
+      경고
+    </div>
+  )
+}
+```
 
 </div>
 </details>
