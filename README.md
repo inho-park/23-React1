@@ -1,7 +1,158 @@
 # 박준성
 ***
 <details>
-<summary>9주차 4/17</summary>
+<summary>10주차 5/4</summary>
+<div markdown='1'>
+
+## 10주차 5/4
+### 리스트와 키
+### 1. 리스트와 키란 무엇인가?
+* 리스트는 자바스크립트의 변수나 객체를 하나의 변수로 묶어 놓은 배열과 같은 것
+* 키는 각 객체나 아이템을 구분할 수 있는 고유한 값을 의미
+* 리액트에서는 배열과 키를 사용하는 반복되는 다수의 엘리먼트를 쉽게 렌더링할 수 있음
+
+### 2. 여러 개의 컴포넌트 렌더링하기
+* 같은 컴포넌트를 화면에 반복적으로 나타내야 할 경우 배열에 들어있는 엘리먼트를 map()함수를 이용하여 렌더링
+```javascript
+const doubled = numbers.map((number) => number * 2);
+```
+
+### 리액트에서 map()함수를 사용한 예제
+```javascript
+    const numbers = [1, 2, 3, 4, 5];
+    const listItems = numbers.map((number) =>   
+        <li>{number}</li>);
+```
+### numbers의 요소에 태그를 결합해서 리턴
+```javascript
+    ReactDom.render(
+        <ul>
+            <li>{1}</li>
+            <li>{2}</li>
+            <li>{3}</li>
+            <li>{4}</li>
+            <li>{5}</li>
+        </ul>,
+        document.getElementById('root')
+    );
+```
+
+### 기본적인 리스트 컴포넌트는 props로 받은 숫자를 numbers로 받아 리스트로 렌더링
+```javascript
+    function NumberList(props) {
+        const { numbers } = props;
+
+        const listItems = numbers.map((number) =>
+            <li>{number}</li>
+        );
+
+        return (
+            <ul>{listItems}</ul>
+        );
+    }
+    const numbers = [1, 2, 3, 4, 5];
+    ReactDom.render(
+        <NumberList numbers={numbers} />,
+        document.getElementById('root')
+    );
+// 출석부 출력하기
+     import React from "react";
+  // 리액트에서 키값은 어떤 아이템이 변경, 추가 또는 제거되었는지 구분하기 위해 사용  
+  // 리액트의 배열은 C언어의 배열과는 다르게 한가지 값이 아니라 여러 속성을 넣을수 있다
+const students = [ {
+id: 1, name: "Inje", }, {
+id: 2, name: "Steve", }, {
+id: 3, name: "Bill", }, {
+id: 4, name: "Bill", }, ];
+
+function AttendanceBook(props) { return (
+
+{students.map((student, index) => { return
+{student.name}
+; })}
+); }
+export default AttendanceBook; 
+```
+
+
+요약
+
+* 리스트 : 같은 아이템을 순서대로 모아놓은 것
+* 키 : 각 객체나 아이템을 구분할 수 있는 고유한 값
+* 여러 개의 컴포넌트 렌더링
+* 자바스크립트 배열의 map()함수를 사용
+* 배열에 들어있는 각 변수에 어떤 처리를 한 뒤 결과(엘리먼트)를 배열로 만들어서 리턴함
+* map()함수 안에 있는 엘리먼트는 꼭 키가 필요함
+다양한 키값의 사용법
+
+### 폼
+### 1.폼이란 무엇인가?
+폼은 일반적으로 사용자로부터 입력을 받기위한 양식에서 많이 사용
+```javascript
+    <form>
+        <label>
+            이름:
+            <input type="text" name="name"/>       
+        </label>
+        <button type="submit">제출<button>
+    </form>
+```
+### 제어 컴포넌트
+제어 컴포넌트는 사용자가 입력한 값에 접근하고 제어할 수 있도록 해주는 컴포넌트
+### 제어 컴포넌트 예시
+```javascript
+    function Nameform(props) {
+        const [value, setValue] = useState("");
+
+        const handleChange = (event) => {
+            setValue(event.target.value);
+        }
+
+        const handleSubmit = (event) => {
+            alert('입력한 이름: ' + value);
+            event.preventDefault();
+        }
+
+        return (
+            <form onSubmit={handleSubmit}>
+                <label>
+                    이름:
+                    <input type="text" value={value} onChange={handleChange} />
+                </label>
+                <button type="submit">제출</button>
+            </form>
+        )
+    }
+```
+textarea 태그
+HTML에서는 <textarea>의 children으로 텍스트가 들어가는 형태입니다.
+    <textarea>
+        안녕하세요, 여기에 이렇게 텍스트가 들어가게 됩니다.
+    </textarea>
+리액트에서는 state를 통해 태그의 value라는 attribute를 변경하여 텍스트를 표시합니다.
+```javascript
+    function RequestForm(props) {
+        const [value, setValue] = useState('요청사항을 입력하세요.');
+    }
+```
+요약
+* 제어 컴포넌트
+* 사용자가 입력한 값에 접근하고 제어할 수 있게 해주는 컴포넌트
+* 값의 리액트의 통제를 받는 입력 폼 엘리먼트
+```javascript
+<input type="text"> 태그 : 한 줄로 텍스트를 입력받기 위한 HTML 태그
+리액트에서는 value라는 attribute로 입력된 값을 관리
+<textarea> 태그 : 여러 줄에 걸쳐서 텍스트를 입력받기 위한 HTML태그 - 리액트에서는 value라는 attribute로 입력된 값을 관리
+태그 드롭다운 목록을 보여주기 위한 HTML 태그 여러 가지 옵션 중에서 하나 또는 여러 개를 선택할 수 있는 기능을 제공 리액트에서는 value라는 attribute로 선택된 옵션의 값을 관리 태그
+디바이스의 저장 장치로부터 사용자가 하나 또는 여러 개의 파일을 선택할 수 있게 해주는 HTML 태그
+서버로 파일을 업로드하거나 자바스크립트의 File API를 사용해서 파일을 다룰 때 사용
+```
+</div>
+</details>
+
+***
+<details>
+<summary>9주차 4/27</summary>
 <div markdown='1'>
 
 ## 9주차 4/27
