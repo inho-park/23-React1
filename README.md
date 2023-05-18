@@ -12,6 +12,26 @@
   * 특정 컴포넌트가 하위 컴포넌트를 포함하는 형태의 합성 방법
   * 주로 범용적인 박스 역할을 하는 Sidebar 혹은 Dialog 와 같은 컴포넌트에서 사용
   * 리액트에서는 props.childrean 을 통해 하위 컴포넌트를 하나로 모아서 제공
+```javascript
+export default function Card(props) {
+    const { title, backgroundColor, children } = props; // props.child 를 활용하여 받기
+
+    return (
+        <div
+            style={{
+                margin: 8,
+                padding: 8,
+                borderRadius: 8,
+                boxShadow: "0px 0px 4px grey",
+                backgroundColor: backgroundColor || "white"
+            }}
+        >
+            {title && <ht>{title}</ht>}
+            {children}
+        </div>
+    )
+}
+```
 * React.createElement
 ```javascript
 // jsx 를 이용한 방법
@@ -29,13 +49,50 @@ const reactElement = React.createElement(
 
 3. Containment 와 Specialization 을 같이 사용
   * Containment 를 위해 props.children 사용 및 Specialization 을 위해 props 직접 정의
-  * 
-```javascript
-
-```
 
 ### 상속
-### 자식 클래스는 부모 클래스가 가진 변수나 함수 등의 속성을 모두 가짐
+*  자식 클래스는 부모 클래스가 가진 변수나 함수 등의 속성을 모두 가짐
+
+### Context 
+* 리엑트 컴포넌트들 사이에서 데이터를 기존의 props 를 통해 전달하는 방식 대신 <b>컴포넌트 트리를 통해 곧바로 컴포넌트에 전달하는 새로운 방식</b>을 제공
+* 여러 컴포넌트에 필요한 데이터인 로그인 여부, 정보 혹은 UI 테마, 현재 선택된 언어 등을 전달할 떄 사용
+* 컨텍스트를 사용하려면 컴포넌트의 상위 컴포넌트에서 Provider 로 감싸주어야함
+```javascript
+function Theme(props) { // 상위 컴포넌트에서 provider 를 통해 값 제공
+  return (
+    <ThemeContext.Provider value="dark">
+      <Toolbar/>
+    </ThemContext.Provider>
+  )
+}
+
+function Toolbar(props) {
+  return (
+    <div>
+      <ThemedButton />
+    </div>
+  )
+}
+
+function ThemedButton(props) {
+  // 리액트는 가장 가까운 상위 테마 Provider 를 찾아서 해당되는 값을 사용
+  // Provider 가 없을 경우 기본 값 사용
+  // 상위 Provider 가 있기 때문에 현재 테마의 값을 dark 로 사용
+  return (
+    <ThemeContext.Consumer>
+      {value => <Button them={value} />}
+    </ThemeContext.Consumer>
+  )
+}
+```
+#### Context 사용 시 고려할 점
+* 컨텍스트는 다른 레벨의 많은 컴포넌트가 특정 데이터를 필요로 하는 경우에 주로 사용
+* 컨텍스트는 결합력이 높아 재사용성이 떨어짐 => 특정 컴포넌트에만 접근하는 데이터의 경우 props 를 통한 전달이 좋음
+* 다양한 레벨이 중첩된 컴포넌트들의 접근이 필요할 경우 컨텍스트 사용이 유리
+#### Context.Provider
+* Context.Provider 컴포넌트로 하위 컴포넌트들을 감싸주면 모든 하위 컴포넌트들이 해당 컨텍스트에 접근할 수 있게 됨
+* value 라는 prop 이 있고 이를 Provider 컴포넌트 하위에 있는 컴포넌트에 전달
+* Provider 컴포넌트가 재랜더링될 때 하위 컴포넌트도 재랜더링되므로 주의 -> useState 로 다루는 변수를 사용하기
 </div>
 </details>
 
