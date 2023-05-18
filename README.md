@@ -1,6 +1,46 @@
 # 박준성
 ***
 <details>
+<summary>12주차 5/18</summary>
+<div markdown='1'>
+
+## 12주차 5/18
+### 합성
+* 여러 개의 컴포넌트를 합쳐서 새로운 컴포넌트를 만드는 것
+### 합성의 종류
+1. Containment 포함
+  * 특정 컴포넌트가 하위 컴포넌트를 포함하는 형태의 합성 방법
+  * 주로 범용적인 박스 역할을 하는 Sidebar 혹은 Dialog 와 같은 컴포넌트에서 사용
+  * 리액트에서는 props.childrean 을 통해 하위 컴포넌트를 하나로 모아서 제공
+* React.createElement
+```javascript
+// jsx 를 이용한 방법
+const jsxElement = <h1 className='jax'> JSX element </h1>
+
+// react 를 사용한 방법
+const reactElement = React.createElement(
+  'h1', // tag
+  {className: 'obj'}, // props
+  'OBJ Element' // child element
+)
+```
+2. Specialization 특수화, 전문화
+* 범용적인 개념을 구별이 되게 구체화하는 것 -> 특수화
+
+3. Containment 와 Specialization 을 같이 사용
+  * Containment 를 위해 props.children 사용 및 Specialization 을 위해 props 직접 정의
+  * 
+```javascript
+
+```
+
+### 상속
+### 자식 클래스는 부모 클래스가 가진 변수나 함수 등의 속성을 모두 가짐
+</div>
+</details>
+
+***
+<details>
 <summary>11주차 5/11</summary>
 <div markdown='1'>
 
