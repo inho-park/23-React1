@@ -1,5 +1,6 @@
+import React from "react";
 
+const ThemeContext = React.createContext();
+ThemeContext.displayName = "ThemeContext";
 
-export default function ThemeContext(props) {
-    
-}
+export default ThemeContext;

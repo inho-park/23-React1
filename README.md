@@ -6,6 +6,7 @@
 <div markdown='1'>
 
 ## 13주차 5/25
+### 복습
 ```javascript
 // 복습
 // Provider 를 통해 상위 컴포넌트에서 값을 전달해주지 않으면 기본값 사용
@@ -23,7 +24,39 @@ const value = useContext(UserContext);
   <Component />
 </MyContext.Provider>
 ```
+### CSS
+```css
+/* display : 엘리먼트를 어떻게 표시할지에 관한 속성 */
+div {
+  display: none | block | inline | flex;
+}
 
+/* visibility : 화면에 보이는지 여부 결정하는 속성 */
+div {
+  visibility: visible | hidden;
+}
+
+/* position : 엘리먼트를 어떻게 위치시킬 것인지를 정의하는 속성 */
+div {
+  position: static | fixed | relative | absolute;
+}
+/* 
+static : 원래의 순서대로 위치
+fixed : 브라우저 window 에 상대적으로 위치
+relative : 보통의 위치에 상대적으로 위치 (left : 16px; 왼쪽에 16px 여백 추가)
+absolute : 절대 위치에 위치 이때 기준은 첫 번째 상위 엘리먼트 
+*/
+
+/* flex : 플렉스 아이템이 자신의 컨테이너가 차지하는 공간에 맞추기 위해 크기를 키우거나 줄이는 방법을 설정하는 속성 */
+div {
+  display: flex;
+  flex-direction: row | column | row-reverse | column-reverse;
+  align-items: stretch | flex-start | center | flex-end | baseline;
+  justify-content: flex-start | center | flex-end | space-between | space-around;
+}
+
+
+```
 </div>
 </details>
 
