@@ -1,4 +1,32 @@
 # 박준성
+
+***
+<details>
+<summary>13주차 5/25</summary>
+<div markdown='1'>
+
+## 13주차 5/25
+```javascript
+// 복습
+// Provider 를 통해 상위 컴포넌트에서 값을 전달해주지 않으면 기본값 사용
+const MyContext = React.createContext(기본값);
+const UserContext = React.createContext({
+  name: "username"
+});
+
+// useContext 를 통해 값을 쉽게 불러올 수 있음
+const value = useContext(UserContext);
+
+
+// Provider 를 통해 값을 전달하는 방법
+<MyContext.Provider value={전달하고 싶은 값}>
+  <Component />
+</MyContext.Provider>
+```
+
+</div>
+</details>
+
 ***
 <details>
 <summary>12주차 5/18</summary>
